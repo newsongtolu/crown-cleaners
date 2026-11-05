@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'enquiries', to: 'home#create_enquiry'
 
+  # SEO Crawler endpoints
+  get '/robots.txt', to: proc { [200, { 'Content-Type' => 'text/plain' }, ["User-agent: *\nAllow: /\nSitemap: #{ENV.fetch('HOST_URL', 'https://crown-cleaners.onrender.com')}/sitemap.xml"]] }
+  get '/sitemap.xml', to: 'sitemaps#show', defaults: { format: 'xml' }
+
   # Public Individual Service Detail View
   get 'services/:id', to: 'home#show_service', as: :service_detail
 

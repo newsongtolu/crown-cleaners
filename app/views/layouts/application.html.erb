@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Crown Cleaners Limited" %></title>
+    <title><%= content_for(:title) || "Crown Cleaners | Professional Cleaning Services" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Crown Cleaners">
     <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Core SEO Meta Tags -->
+    <meta name="description" content="<%= content_for(:meta_description) || 'Professional commercial and residential cleaning services delivering immaculate standards, eco-friendly solutions, and reliable results.' %>">
+    <meta name="keywords" content="<%= content_for(:meta_keywords) || 'cleaning services, commercial cleaners, residential cleaning, deep cleaning, office cleaning' %>">
+    <link rel="canonical" href="<%= request.original_url.split('?').first %>">
+
+    <!-- Open Graph / Social & WhatsApp Sharing Meta Tags -->
+    <meta property="og:title" content="<%= content_for(:title) || 'Crown Cleaners | Professional Cleaning Services' %>">
+    <meta property="og:description" content="<%= content_for(:meta_description) || 'Professional commercial and residential cleaning services delivering immaculate standards and reliable results.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= content_for(:meta_image) || asset_url('icon.png') %>">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for(:title) || 'Crown Cleaners | Professional Cleaning Services' %>">
+    <meta name="twitter:description" content="<%= content_for(:meta_description) || 'Professional commercial and residential cleaning services delivering immaculate standards and reliable results.' %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -69,14 +87,12 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Only show cookie banner if user hasn't made a choice stored in localStorage
         if (!localStorage.getItem("crown_cookie_consent")) {
           setTimeout(() => {
             document.getElementById("cookie-banner").classList.remove("hidden");
           }, 1000);
         }
 
-        // Slower, smoother fade-in scroll animation observer (duration-1000 / 1.2s ease-out)
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
