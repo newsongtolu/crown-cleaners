@@ -2,6 +2,12 @@ module Admin
   class SessionsController < ApplicationController
     layout false # Doesn't use the admin dashboard layout for login
 
+    # Rate limit admin login attempts against brute-force attacks
+    rate_limit to: 5, within: 5.minutes, only: :create, with: -> { 
+      flash.alert = "Too many login attempts. Please try again later."
+      redirect_to admin_login_path 
+    }
+
     def new
       # Renders login form
     end

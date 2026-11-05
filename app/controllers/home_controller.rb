@@ -14,6 +14,11 @@ class HomeController < ApplicationController
   end
 
   def create_enquiry
+    # Honeypot spam defense check: if bot fills out the hidden field, fake success silently
+    if params[:website_hp].present?
+      redirect_to root_path, notice: "Thank you! Your cleaning enquiry has been submitted." and return
+    end
+
     @enquiry = Enquiry.new(enquiry_params)
     if @enquiry.save
       redirect_to root_path, notice: "Thank you! Your cleaning enquiry has been submitted. Our team will contact you shortly."

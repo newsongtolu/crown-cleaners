@@ -19,6 +19,9 @@
       <div class="lg:col-span-7 bg-cream text-royal p-8 sm:p-10 rounded-2xl shadow-xl">
         <%= form_with(model: @enquiry, url: enquiries_path, local: true, class: "space-y-5") do |f| %>
           
+          <!-- Hidden honeypot trap against bot spam (Invisible to real humans) -->
+          <input type="text" name="website_hp" class="hidden" tabindex="-1" autocomplete="off" style="display:none !important;">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Name</label>
