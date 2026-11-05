@@ -17,7 +17,7 @@
     <meta property="og:description" content="<%= content_for(:meta_description) || 'Professional commercial and residential cleaning services delivering immaculate standards and reliable results.' %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
-    <meta property="og:image" content="<%= content_for(:meta_image) || asset_url('icon.png') %>">
+    <meta property="og:image" content="<%= content_for(:meta_image) || "#{request.base_url}/icon.png" %>">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
