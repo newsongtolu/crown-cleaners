@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Crown Cleaners Limited" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Crown Cleaners">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN for instant Windows development rendering -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              royal: '#2E0F4A',
+              gold: '#C9A227',
+              cream: '#F8F4EC',
+              darkpurple: '#240A38',
+              cardpurple: '#3B1A5C'
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body class="text-cream bg-royal antialiased min-h-screen flex flex-col m-0 p-0 font-sans selection:bg-gold selection:text-royal">
+    
+    <!-- Flash Notices -->
+    <% if notice.present? %>
+      <div class="fixed top-5 right-5 z-50 bg-gold text-royal px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-2xl animate-bounce">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <!-- UK PECR Cookie Consent Popup (Hidden if localStorage is set) -->
+    <div id="cookie-banner" class="fixed bottom-6 left-6 z-50 max-w-sm bg-royal border border-gold/40 text-cream p-5 rounded-2xl shadow-2xl space-y-3 backdrop-blur-md hidden">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+        <h4 class="text-xs font-serif font-bold text-white uppercase tracking-wider">Cookie & Privacy Notice</h4>
+      </div>
+      <p class="text-[11px] text-cream/80 leading-relaxed">
+        We store essential cookies on your device to ensure secure sessions and basic platform performance under UK PECR guidelines.
+      </p>
+      <div class="flex items-center space-x-2 pt-1">
+        <button onclick="handleCookies('all')" class="bg-gold text-royal px-3.5 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider hover:brightness-110 transition-all">
+          Accept all
+        </button>
+        <button onclick="handleCookies('essential')" class="bg-cardpurple text-cream border border-gold/30 px-3.5 py-2 rounded-xl text-[10px] font-semibold uppercase tracking-wider hover:bg-[#482270] transition-all">
+          Essential only
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Only show cookie banner if user hasn't made a choice stored in localStorage
+        if (!localStorage.getItem("crown_cookie_consent")) {
+          setTimeout(() => {
+            document.getElementById("cookie-banner").classList.remove("hidden");
+          }, 1000);
+        }
+
+        // Slower, smoother fade-in scroll animation observer (duration-1000 / 1.2s ease-out)
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("opacity-100", "translate-y-0");
+              entry.target.classList.remove("opacity-0", "translate-y-12");
+            }
+          });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll("section, footer").forEach(el => {
+          el.classList.add("transition-all", "duration-1000", "ease-out", "opacity-0", "translate-y-12");
+          observer.observe(el);
+        });
+      });
+
+      function handleCookies(type) {
+        localStorage.setItem("crown_cookie_consent", type);
+        document.getElementById("cookie-banner").classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>

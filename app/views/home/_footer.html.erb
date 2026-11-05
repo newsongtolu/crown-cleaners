@@ -1,0 +1,80 @@
+<footer class="relative bg-[#1A0429] text-[#F8F4EC] pt-28 pb-16 border-t border-[#C9A227]/30">
+  
+  <!-- Solid Opaque Institutional Command Bar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-44 mb-16 relative z-20">
+    <div class="bg-[#3B1A5C] border border-[#C9A227]/40 p-8 sm:p-12 rounded-3xl shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="space-y-2 text-center lg:text-left">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-[#C9A227]">WEST YORKSHIRE OPERATIONS</span>
+        <h3 class="text-2xl sm:text-3xl font-serif text-white">Ready to raise the hygiene standard in your facility?</h3>
+        <p class="text-xs text-[#F8F4EC]/70">Speak directly with our Leeds commercial team for an immediate site assessment.</p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-4 w-full lg:w-auto">
+        <a href="tel:01134962200" class="bg-[#2E0F4A] text-[#C9A227] border border-[#C9A227]/40 px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-[#240A38] transition-all whitespace-nowrap">
+          Call 0113 496 2200
+        </a>
+        <a href="#contact" class="bg-[#C9A227] text-[#2E0F4A] px-6 py-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg hover:brightness-110 transition-all whitespace-nowrap">
+          Request a Quote
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation Links Grid -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+    
+    <!-- Col 1: Brand Info -->
+    <div class="space-y-4">
+      <div class="flex items-center space-x-3">
+        <% if @site_settings['logo_url'].present? %>
+          <img src="<%= @site_settings['logo_url'] %>" alt="<%= @site_settings['company_name'] %>" class="h-8 w-auto object-contain">
+        <% else %>
+          <div class="w-8 h-8 rounded-lg bg-[#C9A227] flex items-center justify-center text-[#2E0F4A]">
+            <%= company_logo_icon("w-5 h-5", "currentColor") %>
+          </div>
+        <% end %>
+        <span class="font-extrabold text-white text-base tracking-wider"><%= @site_settings['company_name'] || "CROWN CLEANERS" %></span>
+      </div>
+      <h3 class="text-lg font-serif text-white leading-snug">Precision care for spaces that matter.</h3>
+      <p class="text-xs text-[#F8F4EC]/70 leading-relaxed">Leeds, West Yorkshire<br>Monday to Friday, 7:00–18:00. Saturday by arrangement.</p>
+    </div>
+
+    <!-- Col 2: Navigation -->
+    <div class="space-y-3">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">VISIT</h4>
+      <ul class="space-y-2 text-xs text-[#F8F4EC]/80">
+        <li><a href="<%= root_path %>#services" class="hover:text-[#C9A227]">Services</a></li>
+        <li><a href="<%= root_path %>#sectors" class="hover:text-[#C9A227]">Sectors</a></li>
+        <li><a href="<%= root_path %>#process" class="hover:text-[#C9A227]">Our Process</a></li>
+        <li><a href="<%= root_path %>#testimonials" class="hover:text-[#C9A227]">Testimonials</a></li>
+        <li><a href="<%= root_path %>#contact" class="hover:text-[#C9A227]">Request a quote</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Direct Contact -->
+    <div class="space-y-3">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">CONTACT</h4>
+      <p class="text-xs text-[#F8F4EC]/90 font-bold"><%= @site_settings['phone'] || '0113 496 2200' %></p>
+      <p class="text-xs text-[#C9A227]"><%= @site_settings['email'] || 'hello@crowncleaners.co.uk' %></p>
+      <p class="text-xs text-[#F8F4EC]/60 pt-2">Registered in England & Wales</p>
+    </div>
+
+    <!-- Col 4: UK Legal Links -->
+    <div class="space-y-3">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">UK LEGAL & COMPLIANCE</h4>
+      <ul class="space-y-2 text-xs text-[#F8F4EC]/80">
+        <li><a href="<%= privacy_path %>" class="hover:text-[#C9A227]">GDPR Privacy Policy</a></li>
+        <li><a href="<%= cookies_policy_path %>" class="hover:text-[#C9A227]">PECR Cookie Policy</a></li>
+        <li><a href="<%= terms_path %>" class="hover:text-[#C9A227]">Terms of Service</a></li>
+        <li><a href="<%= accessibility_path %>" class="hover:text-[#C9A227]">Accessibility Statement</a></li>
+        <li><a href="<%= safeguarding_path %>" class="hover:text-[#C9A227]">Safeguarding Statement</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 mt-12 border-t border-[#F8F4EC]/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#F8F4EC]/50">
+    <p>&copy; <%= Time.current.year %> Crown Cleaners Limited. All rights reserved.</p>
+    <p>Leeds & West Yorkshire Commercial Operations</p>
+  </div>
+</footer>

@@ -1,0 +1,26 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="space-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full inline-block">CARE & HEALTHCARE PROTOCOL</span>
+      <h1 class="text-4xl sm:text-5xl font-serif text-royal pt-2">Safeguarding Statement</h1>
+    </div>
+
+    <div class="space-y-6 text-sm text-royal/80 leading-relaxed bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm">
+      <p>Operating across care settings, supported living facilities, and healthcare environments, Crown Cleaners Limited maintains a zero-tolerance safeguarding framework.</p>
+      
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">1. Vetting & Disclosure</h3>
+      <p>Every cleaning operative assigned to vulnerable environments undergoes enhanced Disclosure and Barring Service (DBS) checks and identity verification prior to site deployment.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">2. Training & Standards</h3>
+      <p>Our personnel are trained in infection prevention, resident confidentiality, professional boundaries, and immediate incident escalation procedures.</p>
+    </div>
+
+    <div>
+      <%= link_to "&larr; Back to Home".html_safe, root_path, class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold transition-colors" %>
+    </div>
+  </div>
+</main>
+
+<%= render "footer" %>

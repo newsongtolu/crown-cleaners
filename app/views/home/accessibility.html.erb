@@ -1,0 +1,26 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="space-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full inline-block">WCAG 2.2 AA</span>
+      <h1 class="text-4xl sm:text-5xl font-serif text-royal pt-2">Accessibility Statement</h1>
+    </div>
+
+    <div class="space-y-6 text-sm text-royal/80 leading-relaxed bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm">
+      <p>Crown Cleaners Limited is committed to digital inclusion, ensuring our web platform is accessible to users of all abilities in compliance with WCAG 2.2 Level AA standards.</p>
+      
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">1. Accessible Features</h3>
+      <p>Our website utilizes high-contrast typography, screen-reader optimized SVG icons, clear semantic structure, and fully keyboard-navigable interactive controls.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">2. Feedback & Support</h3>
+      <p>If you experience any visual or navigation difficulties accessing our content, please notify us at <a href="mailto:hello@crowncleaners.co.uk" class="text-gold underline">hello@crowncleaners.co.uk</a> and we will assist promptly.</p>
+    </div>
+
+    <div>
+      <%= link_to "&larr; Back to Home".html_safe, root_path, class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold transition-colors" %>
+    </div>
+  </div>
+</main>
+
+<%= render "footer" %>

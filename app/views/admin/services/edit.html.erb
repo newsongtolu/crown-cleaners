@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Service | Crown Cleaners Super Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body class="h-screen w-screen flex overflow-hidden bg-slate-100 font-sans antialiased text-slate-800 m-0 p-0">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#2E0F4A] text-white flex flex-col shadow-xl shrink-0 h-full">
+    <div class="p-6 flex items-center space-x-3 border-b border-white/10">
+      <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-[#C9A227] text-[#2E0F4A] shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="font-bold text-base text-white">Crown Cleaners</h1>
+        <p class="text-xs text-[#C9A227] font-semibold">Super Admin Portal</p>
+      </div>
+    </div>
+    <nav class="flex-1 px-4 py-6 space-y-1.5 text-sm">
+      <a href="/admin" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-white/5 hover:text-white transition-colors">Dashboard</a>
+      <a href="/admin/services" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-white/10 text-white font-semibold">Services Manager</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
+    <header class="bg-white shadow-sm border-b border-slate-200 h-16 flex items-center justify-between px-8 z-10 shrink-0">
+      <div class="flex items-center space-x-3">
+        <a href="/admin/services" class="text-xs font-bold text-[#2E0F4A] hover:underline flex items-center space-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          <span>Back to Services</span>
+        </a>
+        <span class="text-slate-300">|</span>
+        <h2 class="text-base font-bold text-slate-800">Edit: <%= @service.title %></h2>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-8">
+      <div class="max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <%= form_with model: [:admin, @service], local: true, class: "space-y-6" do |f| %>
+          
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Service Title</label>
+              <%= f.text_field :title, class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm font-semibold" %>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Slug (URL Identifier)</label>
+              <%= f.text_field :slug, class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm font-mono text-slate-600 bg-slate-50" %>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Image URL</label>
+              <%= f.text_field :image_url, placeholder: "https://images.unsplash.com/...", class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm" %>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Vector Icon Name</label>
+              <%= f.text_field :icon, placeholder: "building, shield-check, home, etc.", class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm" %>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">Service Description</label>
+            <%= f.text_area :description, rows: 5, class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm" %>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Display Position</label>
+              <%= f.number_field :position, class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#2E0F4A] focus:outline-none text-sm" %>
+            </div>
+
+            <div class="flex items-center space-x-3 pt-6">
+              <%= f.check_box :active, class: "w-5 h-5 text-[#2E0F4A] rounded focus:ring-[#2E0F4A]" %>
+              <label class="text-sm font-bold text-slate-700">Active on Public Site</label>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-100 flex justify-end space-x-4">
+            <a href="/admin/services" class="px-5 py-3 rounded-xl border border-slate-300 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-colors">Cancel</a>
+            <%= f.submit "Save Changes", class: "px-6 py-3 bg-[#2E0F4A] hover:bg-[#3B1A5C] text-white font-bold text-sm rounded-xl shadow-lg cursor-pointer transition-all" %>
+          </div>
+
+        <% end %>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

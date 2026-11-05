@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Enquiries | Crown Cleaners Super Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body class="h-screen w-screen flex overflow-hidden bg-slate-100 font-sans antialiased text-slate-800 m-0 p-0">
+
+  <!-- Collapsible Sidebar -->
+  <aside class="group relative w-20 hover:w-72 bg-[#2E0F4A] text-white flex flex-col shadow-2xl shrink-0 h-full transition-all duration-300 ease-in-out z-30">
+    <div class="p-5 flex items-center space-x-3 border-b border-white/10 overflow-hidden shrink-0">
+  <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gold text-royal shadow-md shrink-0">
+    <%= company_logo_icon("w-6 h-6", "currentColor") %>
+  </div>
+  <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+    <h1 class="font-bold text-base tracking-wide text-white"><%= @site_settings['company_name'] rescue "Crown Cleaners" %></h1>
+    <p class="text-xs text-gold font-semibold">Super Admin Portal</p>
+  </div>
+</div>
+
+    <nav class="flex-1 px-3 py-6 space-y-2 text-sm overflow-hidden">
+      <!-- Dashboard -->
+      <a href="/admin" class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-white/5 hover:text-white transition-colors font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
+      </a>
+
+      <!-- Services Manager -->
+      <a href="/admin/services" class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-white/5 hover:text-white transition-colors font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Services Manager</span>
+      </a>
+
+      <!-- Enquiries (Active) -->
+      <a href="/admin/enquiries" class="flex items-center space-x-3 px-3.5 py-3 rounded-xl bg-white/10 text-white font-semibold transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C9A227] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Enquiries</span>
+      </a>
+
+      <!-- Testimonials -->
+      <a href="/admin/testimonials" class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-white/5 hover:text-white transition-colors font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Testimonials</span>
+      </a>
+
+      <!-- Site Settings -->
+      <a href="/admin/site_settings" class="flex items-center space-x-3 px-3.5 py-3 rounded-xl text-slate-300 hover:bg-white/5 hover:text-white transition-colors font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Site Settings</span>
+      </a>
+    </nav>
+
+    <!-- Sign Out -->
+    <div class="p-3 border-t border-white/10 overflow-hidden shrink-0">
+      <%= button_to admin_logout_path, method: :delete, class: "w-full flex items-center justify-center space-x-2 px-3 py-2.5 rounded-xl bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white transition-all text-sm font-semibold cursor-pointer" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+        </svg>
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Sign Out</span>
+      <% end %>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
+    <header class="bg-white shadow-sm border-b border-slate-200 h-16 flex items-center justify-between px-8 z-10 shrink-0">
+      <div>
+        <h2 class="text-base font-bold text-slate-800">Client Enquiries Manager</h2>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-sm font-bold text-slate-700"><%= current_admin_user.email rescue 'admin' %></span>
+        <div class="w-10 h-10 rounded-full bg-[#2E0F4A] text-[#C9A227] flex items-center justify-center font-bold shadow-md ring-2 ring-[#C9A227]/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6 lg:p-8">
+      <div class="w-full space-y-6">
+        
+        <% if flash[:notice] %>
+          <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-xl text-sm text-emerald-700 font-semibold shadow-sm flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span><%= flash[:notice] %></span>
+          </div>
+        <% end %>
+
+        <% if defined?(@enquiries) && @enquiries.any? %>
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="divide-y divide-slate-100">
+              <% @enquiries.each do |enquiry| %>
+                <div class="p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:bg-slate-50 transition-colors">
+                  <div class="space-y-2.5">
+                    <!-- Badges Row -->
+                    <div class="flex flex-wrap items-center gap-2">
+                      <h3 class="text-base font-bold text-slate-900"><%= enquiry.respond_to?(:name) ? enquiry.name : "Client Lead" %></h3>
+                      <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-100 text-[#2E0F4A] font-extrabold"><%= enquiry.respond_to?(:service_type) ? enquiry.service_type : "General Booking" %></span>
+                      <% if enquiry.respond_to?(:sector) && enquiry.sector.present? %>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold">Sector: <%= enquiry.sector %></span>
+                      <% end %>
+                    </div>
+
+                    <!-- Details Row with Professional SVG Icons -->
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-500">
+                      <% if enquiry.respond_to?(:organization) && enquiry.organization.present? %>
+                        <div class="flex items-center space-x-1.5">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-purple-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-6 0h6"/>
+                          </svg>
+                          <span><strong class="text-slate-700"><%= enquiry.organization %></strong></span>
+                        </div>
+                      <% end %>
+
+                      <div class="flex items-center space-x-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-purple-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span><strong class="text-slate-700"><%= enquiry.respond_to?(:phone) ? enquiry.phone : "N/A" %></strong></span>
+                      </div>
+
+                      <div class="flex items-center space-x-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-purple-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span><strong class="text-slate-700"><%= enquiry.respond_to?(:email) ? enquiry.email : "N/A" %></strong></span>
+                      </div>
+
+                      <% if enquiry.respond_to?(:reply_preference) && enquiry.reply_preference.present? %>
+                        <div class="flex items-center space-x-1.5">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-purple-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                          </svg>
+                          <span>Reply via: <strong class="text-slate-700"><%= enquiry.reply_preference %></strong></span>
+                        </div>
+                      <% end %>
+                    </div>
+
+                    <!-- Message Block -->
+                    <p class="text-xs text-slate-600 bg-slate-100 p-3 rounded-xl italic">
+                      "<%= enquiry.respond_to?(:message) ? enquiry.message : "No message provided." %>"
+                    </p>
+                  </div>
+
+                  <div class="flex items-center space-x-4 shrink-0">
+                    <span class="text-xs text-slate-400 font-medium"><%= time_ago_in_words(enquiry.created_at) %> ago</span>
+                    <%= button_to admin_enquiry_path(enquiry), method: :delete, data: { confirm: "Are you sure you want to delete this enquiry?" }, class: "px-3.5 py-2 bg-red-50 hover:bg-red-600 text-red-600 hover:text-white text-xs font-bold rounded-lg transition-all cursor-pointer shadow-sm" do %>
+                      Delete
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% else %>
+          <div class="text-center py-16 bg-white rounded-2xl border-2 border-dashed border-slate-200 shadow-sm">
+            <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+              </svg>
+            </div>
+            <p class="text-sm font-bold text-slate-700">No client enquiries yet</p>
+            <p class="text-xs text-slate-400 mt-1">When prospective clients submit cleaning booking leads from the website, they will appear here instantly.</p>
+          </div>
+        <% end %>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

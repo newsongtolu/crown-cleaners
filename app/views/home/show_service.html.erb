@@ -1,0 +1,58 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <div class="flex items-center justify-between">
+      <%= link_to "&larr; All services".html_safe, root_path(anchor: 'services'), class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold" %>
+      <span class="text-xs font-semibold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full">Service Specification</span>
+    </div>
+
+    <div class="space-y-6">
+      <h1 class="text-4xl sm:text-6xl font-serif text-royal">
+        <%= @service.try(:title) || @service.try(:name) || "Cleaning Service" %>
+      </h1>
+      <p class="text-lg text-royal/80 font-light max-w-3xl leading-relaxed">
+        <%= @service.description rescue "Delivering high-specification cleaning tailored to commercial and healthcare environments across West Yorkshire." %>
+      </p>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-royal/10 shadow-lg h-[420px]">
+      <img src="<%= @service.try(:image_url).presence || 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop' %>" alt="Service Detail" class="w-full h-full object-cover">
+    </div>
+
+    <div class="bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-2xl font-serif text-royal">Specification & Compliance Standard</h3>
+        <p class="text-xs text-royal/70">Every clean executed under this service follows strict institutional operational guidelines.</p>
+      </div>
+
+      <ul class="space-y-4 text-sm text-royal/80">
+        <li class="flex items-start space-x-3">
+          <span class="text-gold font-bold text-base leading-none">&check;</span>
+          <span><strong>Vetted Staff:</strong> Delivered exclusively by fully DBS-checked, insured, and uniformed personnel.</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <span class="text-gold font-bold text-base leading-none">&check;</span>
+          <span><strong>COSHH Compliance:</strong> Utilizes assessed, eco-friendly, and hospital-grade sanitization chemicals.</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <span class="text-gold font-bold text-base leading-none">&check;</span>
+          <span><strong>Quality Assurance:</strong> Includes weekly supervisory audits and logged digital service reports.</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <span class="text-gold font-bold text-base leading-none">&check;</span>
+          <span><strong>Flexible Scheduling:</strong> Out-of-hours, early morning, or night shift operations to ensure zero business disruption.</span>
+        </li>
+      </ul>
+      
+      <div class="pt-6 border-t border-royal/10 flex flex-wrap gap-4">
+        <%= link_to "Request a quote for this service", root_path(anchor: 'contact'), class: "bg-royal text-cream px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md hover:bg-cardpurple transition-all" %>
+        <%= link_to "View all services", root_path(anchor: 'services'), class: "bg-gray-100 text-royal px-6 py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider hover:bg-gray-200 transition-all" %>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<%= render "footer" %>

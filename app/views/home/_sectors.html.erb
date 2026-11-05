@@ -1,0 +1,95 @@
+<section id="sectors" class="py-24 bg-royal text-cream border-b border-gold/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <div class="space-y-3 max-w-2xl">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold">SECTORS</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-normal text-white tracking-tight">Where the standard is not optional.</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- 5 Sectors List -->
+      <div class="lg:col-span-6 space-y-4" id="sector-list">
+        
+        <div class="sector-item p-6 rounded-xl bg-cardpurple border border-gold/40 space-y-2 cursor-pointer transition-all" data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" data-title="Leeds Financial District Corporate Suite">
+          <div class="flex items-center space-x-3">
+            <span class="text-xs font-bold text-gold">01</span>
+            <h3 class="text-xl font-serif text-white">Commercial offices</h3>
+          </div>
+          <p class="text-xs text-cream/70 pl-7 leading-relaxed">Workplaces that should feel considered at 8am, not hurriedly straightened.</p>
+        </div>
+
+        <div class="sector-item p-6 rounded-xl bg-cardpurple/40 border border-gold/10 space-y-2 cursor-pointer transition-all hover:border-gold/40" data-img="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1200&auto=format&fit=crop" data-title="West Yorkshire Care & Supported Living Facility">
+          <div class="flex items-center space-x-3">
+            <span class="text-xs font-bold text-gold">02</span>
+            <h3 class="text-xl font-serif text-white">Care settings</h3>
+          </div>
+          <p class="text-xs text-cream/70 pl-7 leading-relaxed">Care homes and supported living, cleaned around the people who live there.</p>
+        </div>
+
+        <div class="sector-item p-6 rounded-xl bg-cardpurple/40 border border-gold/10 space-y-2 cursor-pointer transition-all hover:border-gold/40" data-img="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop" data-title="CQC-Compliant Healthcare Medical Center">
+          <div class="flex items-center space-x-3">
+            <span class="text-xs font-bold text-gold">03</span>
+            <h3 class="text-xl font-serif text-white">Healthcare environments</h3>
+          </div>
+          <p class="text-xs text-cream/70 pl-7 leading-relaxed">Clinics and healthcare premises with a method that can be shown to an inspector.</p>
+        </div>
+
+        <div class="sector-item p-6 rounded-xl bg-cardpurple/40 border border-gold/10 space-y-2 cursor-pointer transition-all hover:border-gold/40" data-img="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop" data-title="Leeds Residential Housing Association Block">
+          <div class="flex items-center space-x-3">
+            <span class="text-xs font-bold text-gold">04</span>
+            <h3 class="text-xl font-serif text-white">Housing associations</h3>
+          </div>
+          <p class="text-xs text-cream/70 pl-7 leading-relaxed">Shared areas kept steady, with defects reported rather than painted over.</p>
+        </div>
+
+        <div class="sector-item p-6 rounded-xl bg-cardpurple/40 border border-gold/10 space-y-2 cursor-pointer transition-all hover:border-gold/40" data-img="https://images.unsplash.com/photo-1517502884422-41eaead166d4?q=80&w=1200&auto=format&fit=crop" data-title="West Yorkshire Civic & Community Facility">
+          <div class="flex items-center space-x-3">
+            <span class="text-xs font-bold text-gold">05</span>
+            <h3 class="text-xl font-serif text-white">Community facilities</h3>
+          </div>
+          <p class="text-xs text-cream/70 pl-7 leading-relaxed">Halls, hubs and shared civic rooms, ready for whoever has booked them next.</p>
+        </div>
+
+      </div>
+
+      <!-- Dynamic Preview Visual Right -->
+      <div class="lg:col-span-6">
+        <div class="rounded-2xl overflow-hidden border border-gold/30 shadow-2xl h-[460px] relative">
+          <img id="sector-image" src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Featured Facility" class="w-full h-full object-cover transition-opacity duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-royal via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <span class="text-xs text-gold uppercase tracking-wider font-semibold">Featured Facility</span>
+            <h4 id="sector-title" class="text-lg font-serif text-white">Leeds Financial District Corporate Suite</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".sector-item");
+    const imgEl = document.getElementById("sector-image");
+    const titleEl = document.getElementById("sector-title");
+
+    items.forEach(item => {
+      item.addEventListener("mouseenter", () => {
+        items.forEach(i => {
+          i.classList.remove("border-gold/40", "bg-cardpurple");
+          i.classList.add("border-gold/10", "bg-cardpurple/40");
+        });
+        item.classList.remove("border-gold/10", "bg-cardpurple/40");
+        item.classList.add("border-gold/40", "bg-cardpurple");
+
+        imgEl.style.opacity = '0.4';
+        setTimeout(() => {
+          imgEl.src = item.getAttribute("data-img");
+          titleEl.textContent = item.getAttribute("data-title");
+          imgEl.style.opacity = '1';
+        }, 150);
+      });
+    });
+  });
+</script>

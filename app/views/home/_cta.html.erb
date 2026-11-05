@@ -1,0 +1,83 @@
+<section id="contact" class="py-28 bg-royal text-cream border-b border-gold/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-darkpurple p-8 sm:p-14 rounded-3xl border border-gold/30 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Copy & Direct Call -->
+      <div class="lg:col-span-5 space-y-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-gold">REQUEST A QUOTE</span>
+        <h2 class="text-4xl sm:text-6xl font-serif text-white tracking-tight leading-tight">Tell us about the building.</h2>
+        <p class="text-xs sm:text-sm text-cream/80 font-light leading-relaxed">
+          Share the site, the hours and what good looks like. We reply with a clear proposal — scope, frequency and price — not a vague promise.
+        </p>
+        <div class="pt-2">
+          <p class="text-xs text-cream/60 uppercase tracking-wider mb-1">Or call direct</p>
+          <a href="tel:01134962200" class="text-lg font-bold text-gold hover:underline">0113 496 2200</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Cream Form Container -->
+      <div class="lg:col-span-7 bg-cream text-royal p-8 sm:p-10 rounded-2xl shadow-xl">
+        <%= form_with(model: @enquiry, url: enquiries_path, local: true, class: "space-y-5") do |f| %>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Name</label>
+              <%= f.text_field :name, required: true, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Organisation</label>
+              <%= f.text_field :organization, placeholder: "Optional", class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Email</label>
+              <%= f.email_field :email, required: true, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Telephone</label>
+              <%= f.telephone_field :phone, required: true, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Service</label>
+              <%= f.select :service_type, ["Commercial cleaning", "Healthcare cleaning", "Care homes & supported living", "Housing & communal areas", "Post-construction cleaning", "Specialist & periodic cleans"], { prompt: "Not sure yet" }, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Sector</label>
+              <%= f.select :sector, ["Commercial offices", "Care settings", "Healthcare environments", "Housing associations", "Community facilities"], { prompt: "Not sure yet" }, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">The building</label>
+            <%= f.text_area :message, rows: 3, placeholder: "Where it is, how often you need us, and anything we should work around...", class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-royal/70 mb-1.5">Prefer we reply by</label>
+            <%= f.select :reply_preference, ["Email", "Telephone", "Either"], {}, class: "w-full bg-[#FAF7F2] border border-royal/20 rounded-xl px-4 py-3 text-xs text-royal focus:outline-none focus:border-gold" %>
+          </div>
+
+          <div class="flex items-start space-x-3 pt-1">
+            <%= f.check_box :consent, required: true, class: "mt-0.5 rounded border-royal/30 text-royal focus:ring-0" %>
+            <span class="text-[11px] text-royal/80 leading-snug">
+              I agree to Crown Cleaners Limited using these details to respond to this enquiry. See the <%= link_to "privacy policy", privacy_path, class: "underline hover:text-gold" %>.
+            </span>
+          </div>
+
+          <div>
+            <button type="submit" class="w-full bg-royal text-cream py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg hover:bg-cardpurple transition-all">
+              Request a quote
+            </button>
+          </div>
+
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</section>

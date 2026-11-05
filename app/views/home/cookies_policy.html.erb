@@ -1,0 +1,29 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="space-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full inline-block">PECR REGULATION</span>
+      <h1 class="text-4xl sm:text-5xl font-serif text-royal pt-2">Cookie Policy</h1>
+    </div>
+
+    <div class="space-y-6 text-sm text-royal/80 leading-relaxed bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm">
+      <p>This Policy details how Crown Cleaners Limited uses cookies under the Privacy and Electronic Communications Regulations (PECR).</p>
+      
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">1. What Are Cookies</h3>
+      <p>Cookies are small text files placed on your device to ensure website security, session persistence, and enhanced user interaction.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">2. Strictly Necessary Cookies</h3>
+      <p>Essential cookies are used to authenticate administrative portal access and retain form security state (CSRF tokens). These cannot be disabled as the site cannot function safely without them.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">3. Preference & Consent State</h3>
+      <p>We log your consent preferences locally when you interact with our PECR cookie banner overlay on initial page visit.</p>
+    </div>
+
+    <div>
+      <%= link_to "&larr; Back to Home".html_safe, root_path, class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold transition-colors" %>
+    </div>
+  </div>
+</main>
+
+<%= render "footer" %>

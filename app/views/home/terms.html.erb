@@ -1,0 +1,29 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="space-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full inline-block">COMMERCIAL TERMS</span>
+      <h1 class="text-4xl sm:text-5xl font-serif text-royal pt-2">Terms of Service</h1>
+    </div>
+
+    <div class="space-y-6 text-sm text-royal/80 leading-relaxed bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm">
+      <p>By accessing or using the services of Crown Cleaners Limited, you agree to bound by these commercial terms operating across Leeds and West Yorkshire.</p>
+      
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">1. Quotations & Site Surveys</h3>
+      <p>All online quotes are preliminary proposals subject to a physical site assessment, COSHH safety review, and signed commercial agreement.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">2. Service Execution & Staffing</h3>
+      <p>We commit to deploying fully vetted, DBS-checked personnel who operate under strict health and safety protocols during agreed operational hours.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">3. Governing Law</h3>
+      <p>These terms and any disputes arising from service contracts are governed exclusively by the laws of England and Wales.</p>
+    </div>
+
+    <div>
+      <%= link_to "&larr; Back to Home".html_safe, root_path, class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold transition-colors" %>
+    </div>
+  </div>
+</main>
+
+<%= render "footer" %>

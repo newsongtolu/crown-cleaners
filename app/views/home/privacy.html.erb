@@ -1,0 +1,32 @@
+<%= render "navbar" %>
+
+<main class="py-24 bg-cream text-royal min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="space-y-2">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold bg-royal px-3.5 py-1.5 rounded-full inline-block">UK GDPR COMPLIANCE</span>
+      <h1 class="text-4xl sm:text-5xl font-serif text-royal pt-2">Privacy Policy</h1>
+    </div>
+
+    <div class="space-y-6 text-sm text-royal/80 leading-relaxed bg-white p-8 sm:p-12 rounded-3xl border border-royal/10 shadow-sm">
+      <p>Crown Cleaners Limited respects your privacy and is committed to protecting your personal data in strict compliance with the Data Protection Act 2018 and UK General Data Protection Regulation (UK GDPR).</p>
+      
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">1. Data Controller</h3>
+      <p>Crown Cleaners Limited is the registered data controller responsible for the personal data collected through this platform for commercial operations in Leeds and West Yorkshire.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">2. Information We Collect</h3>
+      <p>When you submit a quote request or contact us, we collect your name, organisation details, email address, telephone number, and building cleaning requirements.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">3. How We Use Your Data</h3>
+      <p>Your information is processed strictly to assess facilities, provide commercial proposals, and fulfill cleaning contract obligations. We do not sell or rent data to third parties.</p>
+
+      <h3 class="text-xl font-serif font-bold text-royal pt-4">4. Your Statutory Rights</h3>
+      <p>Under UK GDPR, you have the right to request access to, correction of, or deletion of your personal records. Contact our privacy officer at <a href="mailto:hello@crowncleaners.co.uk" class="text-gold underline">hello@crowncleaners.co.uk</a>.</p>
+    </div>
+
+    <div>
+      <%= link_to "&larr; Back to Home".html_safe, root_path, class: "text-xs font-bold uppercase tracking-wider text-royal hover:text-gold transition-colors" %>
+    </div>
+  </div>
+</main>
+
+<%= render "footer" %>

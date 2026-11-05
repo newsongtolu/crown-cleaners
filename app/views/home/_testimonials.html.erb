@@ -1,0 +1,54 @@
+<section id="testimonials" class="py-28 bg-cream text-royal border-b border-royal/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    
+    <div class="space-y-3 max-w-2xl">
+      <span class="text-xs font-bold uppercase tracking-widest text-gold">IN THEIR WORDS</span>
+      <h2 class="text-4xl sm:text-6xl font-serif font-normal text-royal tracking-tight">The standard clients describe.</h2>
+    </div>
+
+    <!-- Dynamic Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <% if @testimonials.present? %>
+        <% @testimonials.each do |item| %>
+          <div class="bg-white p-10 rounded-3xl border border-gold/40 shadow-sm flex flex-col justify-between space-y-8">
+            <p class="text-sm text-royal/90 font-serif italic leading-relaxed">
+              "<%= item.quote %>"
+            </p>
+            <div class="pt-4 border-t border-royal/10">
+              <p class="text-xs font-bold text-royal"><%= item.author_title %> &middot; <%= item.company_or_location %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <!-- Fallback Default Reviews -->
+        <div class="bg-white p-10 rounded-3xl border border-gold/40 shadow-sm flex flex-col justify-between space-y-8">
+          <p class="text-sm text-royal/90 font-serif italic leading-relaxed">
+            "We needed a team that understood the difference between a tidy room and a space that is safe for residents. They did, and they kept the same people on the rota."
+          </p>
+          <div class="pt-4 border-t border-royal/10">
+            <p class="text-xs font-bold text-royal">Facilities lead &middot; Care setting, Leeds</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 rounded-3xl border border-gold/40 shadow-sm flex flex-col justify-between space-y-8">
+          <p class="text-sm text-royal/90 font-serif italic leading-relaxed">
+            "The proposal was specific. Frequency, hours, what was included. After they started, the building simply looked as it should, every morning."
+          </p>
+          <div class="pt-4 border-t border-royal/10">
+            <p class="text-xs font-bold text-royal">Practice manager &middot; West Yorkshire</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 rounded-3xl border border-gold/40 shadow-sm flex flex-col justify-between space-y-8">
+          <p class="text-sm text-royal/90 font-serif italic leading-relaxed">
+            "Communal areas are where residents judge a block. The standard has held, and when something needs reporting they actually tell us."
+          </p>
+          <div class="pt-4 border-t border-royal/10">
+            <p class="text-xs font-bold text-royal">Estates officer &middot; Housing association</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</section>

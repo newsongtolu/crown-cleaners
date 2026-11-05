@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quote: MyText
+  author_title: MyString
+  company_or_location: MyString
+  rating: 1
+  position: 1
+  active: false
+
+two:
+  quote: MyText
+  author_title: MyString
+  company_or_location: MyString
+  rating: 1
+  position: 1
+  active: false

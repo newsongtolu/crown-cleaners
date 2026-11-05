@@ -1,0 +1,84 @@
+<section id="services" class="py-24 bg-cream text-royal border-b border-royal/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <div class="space-y-3 max-w-2xl">
+      <span class="text-xs font-bold uppercase tracking-widest text-royal/60">SERVICES</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-normal text-royal tracking-tight">The work, named properly.</h2>
+      <p class="text-sm text-royal/70 leading-relaxed">
+        Six services, each with a specification. If your building sits between them, we will say so rather than force a label.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% if @services.present? %>
+        <% @services.each do |service| %>
+          <div class="group bg-white rounded-2xl overflow-hidden border border-royal/10 shadow-sm hover:shadow-lg transition-all flex flex-col">
+            <div class="h-60 overflow-hidden bg-gray-100">
+              <img src="<%= service.try(:image_url).presence || 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop' %>" alt="<%= service.try(:title) || service.try(:name) %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-8 flex flex-col flex-grow justify-between space-y-6">
+              <div class="space-y-3">
+                <h3 class="text-2xl font-serif text-royal"><%= service.try(:title) || service.try(:name) || "Cleaning Service" %></h3>
+                <p class="text-xs text-royal/70 leading-relaxed"><%= service.description %></p>
+              </div>
+              <%= link_to service_detail_path(service), class: "inline-flex items-center text-xs font-bold uppercase tracking-wider text-royal hover:text-gold space-x-2 pt-2" do %>
+                <span>Learn more</span>
+                <span class="text-base">&rarr;</span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <!-- Default Fallback Cleaners Grid -->
+        <div class="group bg-white rounded-2xl overflow-hidden border border-royal/10 shadow-sm hover:shadow-lg transition-all flex flex-col">
+          <div class="h-60 overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Commercial cleaning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col flex-grow justify-between space-y-6">
+            <div class="space-y-3">
+              <h3 class="text-2xl font-serif text-royal">Commercial & Office Cleaning</h3>
+              <p class="text-xs text-royal/70 leading-relaxed">Reliable, contract-based cleaning for corporate offices, retail spaces, and business premises across Leeds and West Yorkshire.</p>
+            </div>
+            <%= link_to service_detail_path(1), class: "inline-flex items-center text-xs font-bold uppercase tracking-wider text-royal hover:text-gold space-x-2 pt-2" do %>
+              <span>Learn more</span>
+              <span class="text-base">&rarr;</span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden border border-royal/10 shadow-sm hover:shadow-lg transition-all flex flex-col">
+          <div class="h-60 overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop" alt="Healthcare cleaning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col flex-grow justify-between space-y-6">
+            <div class="space-y-3">
+              <h3 class="text-2xl font-serif text-royal">Healthcare Facility Cleaning</h3>
+              <p class="text-xs text-royal/70 leading-relaxed">Rigorous, clinical-grade disinfection and sanitization adhering strictly to healthcare regulatory standards and infection control.</p>
+            </div>
+            <%= link_to service_detail_path(2), class: "inline-flex items-center text-xs font-bold uppercase tracking-wider text-royal hover:text-gold space-x-2 pt-2" do %>
+              <span>Learn more</span>
+              <span class="text-base">&rarr;</span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="group bg-white rounded-2xl overflow-hidden border border-royal/10 shadow-sm hover:shadow-lg transition-all flex flex-col">
+          <div class="h-60 overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800&auto=format&fit=crop" alt="Care homes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col flex-grow justify-between space-y-6">
+            <div class="space-y-3">
+              <h3 class="text-2xl font-serif text-royal">Supported Living Cleaning</h3>
+              <p class="text-xs text-royal/70 leading-relaxed">Sensitive, high-standard hygiene maintenance for supported living environments, ensuring safety and comfort for vulnerable residents.</p>
+            </div>
+            <%= link_to service_detail_path(3), class: "inline-flex items-center text-xs font-bold uppercase tracking-wider text-royal hover:text-gold space-x-2 pt-2" do %>
+              <span>Learn more</span>
+              <span class="text-base">&rarr;</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Crown Cleaners Limited</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body class="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[#2E0F4A]">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-[#C9A227]">
+    
+    <!-- Header with SVG Crown Badge -->
+    <div class="text-center">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2E0F4A] text-[#C9A227] mb-4 shadow-md ring-4 ring-[#C9A227]/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Super Admin Portal</h2>
+      <p class="mt-2 text-sm text-slate-500 font-medium">Crown Cleaners Limited • Management Console</p>
+    </div>
+
+    <!-- Flash Alerts -->
+    <% if flash[:alert] %>
+      <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg text-sm text-red-700 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        </svg>
+        <span><%= flash[:alert] %></span>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-lg text-sm text-emerald-700 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span><%= flash[:notice] %></span>
+      </div>
+    <% end %>
+
+    <!-- Form -->
+    <%= form_with url: admin_login_path, local: true, class: "mt-8 space-y-6" do |f| %>
+      <div class="rounded-md space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Admin Email</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <%= f.email_field :email, required: true, autofocus: true, placeholder: "crowncleanersuk9@gmail.com", class: "pl-11 appearance-none block w-full px-3 py-3 border border-slate-300 placeholder-slate-400 text-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E0F4A] focus:border-[#2E0F4A] text-sm transition-all" %>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <%= f.password_field :password, required: true, placeholder: "••••••••••••", class: "pl-11 appearance-none block w-full px-3 py-3 border border-slate-300 placeholder-slate-400 text-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E0F4A] focus:border-[#2E0F4A] text-sm transition-all" %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <%= f.button type: "submit", class: "group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border border-transparent text-sm font-bold rounded-lg text-white bg-[#2E0F4A] hover:bg-[#3B1A5C] active:bg-[#230b38] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2E0F4A] transition-all shadow-lg cursor-pointer" do %>
+          <span>Secure Login</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#C9A227] transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-6">
+      <a href="/" class="inline-flex items-center space-x-1 text-xs font-semibold text-slate-500 hover:text-[#2E0F4A] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Return to Public Website</span>
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
